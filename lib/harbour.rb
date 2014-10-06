@@ -36,13 +36,23 @@ class Harbour
 	end
 
 
-	def pick_cargo(container)
+	def find_mean_into_harbour(mean)
+		if mean.class == Ship
+			@fleet.index(mean)
+		elsif mean.class == Lorry
+			@infantry.index(mean)
+		end	
+	end
+
+	def pick_cargo(container, mean)
 			what_picks = which_mean(container)
-			if what_picks == 'lorry'
-				@infantry[0].on_truck << container
+			if what_picks == 'lorry' and mean.class == Lorry
+				position = find_mean_into_harbour(mean)
+				@infantry[position].on_truck << container
 			puts "I am gonna be picked by a lorry"
-			elsif what_picks == 'ship'
-				@fleet[0].on_board << container
+			elsif what_picks == 'ship' and mean.class == Ship
+				position = find_mean_into_harbour(mean)
+				@fleet[position].on_board << container
 			puts "I am gonna be picked by a ship"
 		end
 	end

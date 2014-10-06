@@ -1,5 +1,5 @@
 class Container
-	attr_accessor :id, :origin, :destination, :mean_of_transport 
+	attr_accessor :id, :origin, :destination, :mean_of_transport, :picked_from_harbour
 
 	def initialize
 		@id = rand(1889..43556)
@@ -13,7 +13,7 @@ class Container
 	end 
 
 	def delivery_date
-		 @delivery_date = Date.today + rand(1..7) 
+		 @delivery_date = (Date.today + rand(1..7)).to_s
 	end
 
 	def continue_journey_by

@@ -48,7 +48,7 @@ class Harbour
 			what_picks = which_mean(container)
 			if what_picks == 'lorry' and mean.class == Lorry
 				position = find_mean_into_harbour(mean)
-				container.picked_when = Date.today
+				container.picked_from_harbour = Date.today.to_s
 				@infantry[position].on_truck << container   
 				#i need to add when the container has been picked
 

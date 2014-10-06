@@ -49,29 +49,15 @@ class Harbour
 			if what_picks == 'lorry' and mean.class == Lorry
 				position = find_mean_into_harbour(mean)
 				container.picked_from_harbour = Date.today.to_s
-				@infantry[position].on_truck << container   
-				#i need to add when the container has been picked
-
-
+				@infantry[position].on_truck << container
 			puts "I am gonna be picked by a lorry"
 			elsif what_picks == 'ship' and mean.class == Ship
 				position = find_mean_into_harbour(mean)
+				container.picked_from_harbour = Date.today.to_s
 				@fleet[position].on_board << container
-
-
 			puts "I am gonna be picked by a ship"
 		else
 			puts 'I cannot be carried by this means of transport '
 		end
 	end
 end  		 	
-
-#pick_cargo(which_mean(@rubrick))
-
-
-#pickuo function
-
-
-
-
-#will have the list of containers and ships and lorries

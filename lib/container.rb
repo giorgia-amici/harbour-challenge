@@ -5,5 +5,13 @@ class Container
 		@id = rand(1889..43556)
 	end 
 
+	def today_date
+		now = Time.new
+		time = "#{now.day}-#{now.month}-#{now.year}"
+	end
+
+	def delivered_today?
+		delivery_date == today_date
+	end
 end	
 

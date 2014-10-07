@@ -1,71 +1,22 @@
 class Harbour
-	attr_accessor :cargo, :fleet, :infantry
+	attr_accessor :cargo, :name
 
-	def initialize
-		@cargo = []
-		@fleet = []
-		@infantry = [] 
-		@containers_to_be_delivered = []
+	def initialize(name = 'harbour1')
+		@name = name
+		@wharehouse = []
 	end
 
-	def ready_to_be_picked(container)
-		@cargo << container
+	def receive_container(container)
+		@wharehouse << container
 	end
 
-
-	def in_the_harbour(x)
-		if x.class == Ship
-			@fleet << x
-		elsif x.class == Lorry
-			@infantry << x
-		end
+	def remove_container(container)
+		@wharehouse.each { |box| @wharehouse.delete(container) if box.id == container.id }
 	end
 
-	def fleet?(ship)
-		@fleet.include?(ship)
+	def deliver_container(container, transport)
+		transport.cargo << container
+		remove_container(container)
 	end
 
-	def infantry?(lorry)
-		@infantry.include?(lorry)
-	end
-
-
-	def find_into_harbour(mean)
-		if mean.class == Ship
-			@fleet.index(mean)
-		elsif mean.class == Lorry
-			@infantry.index(mean)
-		end	
-	end
-
-	# def same_destination?(container,mean)
-	# 	if container.destination == mean.destination 
-	# 		true
-	# 	end
-	# end
-
-	def pick_up(container)
-		@fleet.select{|ship| ship.destination == container.destination} 
-		@infantry.select{|lorry| lorry.destination == container.destination}
-
-		#IF BOTH ARE NOT FULL
-	end
-
-
-
-
-# def pick_up(container, mean)
-# 	@cargo.each do |container|
-# 	if container.destination == mean.destination
-# 		mean.on_board << container
-# 		@containers_to_be_deliverd << container
-# 	end
-# end
-
-
-
-	
-
-
-
-end  		 	
+end

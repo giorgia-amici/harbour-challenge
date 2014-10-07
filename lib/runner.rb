@@ -11,7 +11,8 @@ def get_instances
 	@trucky = Lorry.new
 	@rubrick = Container.new
 	@msc = Container.new
-	# @rubrick.departure_place = ['Rome', 'Vigo', 'Liverpool', 'New York', 'Beijing', 'Naples','Marseille'].shuffle[0]
+	@rubrick.origin = ['Rome', 'Vigo', 'Liverpool', 'New York', 'Beijing', 'Naples','Marseille'].shuffle[0]
+	@rubrick.destination = ['Rome', 'Vigo', 'Liverpool', 'New York', 'Beijing', 'Naples','Marseille'].shuffle[0]
 	# @rubrick.destination_place = ['Rome', 'Vigo', 'Liverpool', 'New York', 'Beijing', 'Naples','Marseille'].shuffle[0]
 	# @rubrick.delivery_date
 	# @msc.delivery_date

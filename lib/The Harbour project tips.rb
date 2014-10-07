@@ -48,3 +48,20 @@ confusion because I have the tenency of forgetting the biggest class that compre
 			------->RETURN 10 not because is the sum of those number, but because 
 			is the result of the :fourth block execution
 		so the argument is the starting point of the inject method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To do(Wed)
+	generate a plate for lorries as string of numbers and letters

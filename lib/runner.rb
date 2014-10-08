@@ -5,26 +5,27 @@ require	'./ship.rb'
 require "date"
 
 def get_instances
+	@vigo = Harbour.new('Vigo')
 	@pequod = Ship.new
 	@nautilus = Ship.new
 	@camion = Lorry.new
 	@trucky = Lorry.new
+	@trucky.capacity = 10
 	@rubrick = Container.new
+	@rubrick.today_date
+	@rubrick.delivery_date = "8-10-2014"
 	@msc = Container.new
-	@rubrick.origin = ['Rome', 'Vigo', 'Liverpool', 'New York', 'Beijing', 'Naples','Marseille'].shuffle[0]
-	@rubrick.destination = ['Rome', 'Vigo', 'Liverpool', 'New York', 'Beijing', 'Naples','Marseille'].shuffle[0]
-	# @rubrick.destination_place = ['Rome', 'Vigo', 'Liverpool', 'New York', 'Beijing', 'Naples','Marseille'].shuffle[0]
-	# @rubrick.delivery_date
-	# @msc.delivery_date
-	@border = Harbour.new
-	@border.in_the_harbour(@camion)
-	@border.in_the_harbour(@nautilus)
-	@border.in_the_harbour(@pequod)
-	@border.in_the_harbour(@trucky)
-	@border.ready_to_be_picked(@rubrick)
-	@border.ready_to_be_picked(@msc)
-	# @rubrick.continue_journey_by
-	# @msc.continue_journey_by
+	@msc.today_date
+	@msc.delivery_date = "8-10-2014"
+	@makro = Container.new
+	@makro.today_date
+	@makro.delivery_date = "9-10-2014"
+	@vigo.receive_container(@makro)
+	@vigo.receive_container(@rubrick)
+	@vigo.receive_container(@msc)
+
+
+
 end
 
 

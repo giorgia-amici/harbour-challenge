@@ -1,5 +1,5 @@
 class Harbour
-	attr_accessor :cargo, :name
+	attr_accessor :cargo, :name, :wharehouse
 
 	def initialize(name = 'harbour1')
 		@name = name
@@ -11,12 +11,20 @@ class Harbour
 	end
 
 	def remove_container(container)
-		@wharehouse.each { |box| @wharehouse.delete(container) if box.id == container.id }
+		@wharehouse.delete_if{ |box| box.id == container.id }
 	end
 
 	def deliver_container(container, transport)
-		transport.cargo << container
-		remove_container(container)
+		if container.delivered_today? 
+			if !transport.full?
+				transport.cargo << container
+				remove_container(container)
+			end
+		end
 	end
+
+
+
+
 
 end

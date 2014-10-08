@@ -14,13 +14,24 @@ class Harbour
 		@wharehouse.delete_if{ |box| box.id == container.id }
 	end
 
+	def same_destination?(container, transport)
+		container.destination == transport.destination
+	end
+
+
+
+
 	def deliver_container(container, transport)
 		if container.delivered_today? 
-			if !transport.full?
+			if same_destination?(container, transport)
+				if !transport.full?
 				transport.cargo << container
 				remove_container(container)
-			else
+				else
 				"I am full"
+				end
+			else
+				"Different destinations "
 			end
 		else
 			"Not to be delivered today"

@@ -19,7 +19,11 @@ class Harbour
 			if !transport.full?
 				transport.cargo << container
 				remove_container(container)
+			else
+				"I am full"
 			end
+		else
+			"Not to be delivered today"
 		end
 	end
 
